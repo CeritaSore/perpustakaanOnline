@@ -44,6 +44,7 @@
                                     <li class="menu-item {{$title === 'feature'?'active':''}}"><a href="/feature" class="nav-link">Featured</a>
                                     </li>
                                     <li class="menu-item {{$title === 'popular'?'active':''}}"><a href="/popular" class="nav-link">Popular</a></li>
+                                    <li class="menu-item {{$title === 'about'?'active':''}}"><a href="/about" class="nav-link">About</a></li>
                                     
                                     <li class="menu-item"><a
                                             href="#"

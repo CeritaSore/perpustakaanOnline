@@ -22,4 +22,9 @@ class FrontendController extends Controller
         return view('frontend.pop', compact('title'));
         
     }
+    public function about() {
+        $title = 'about';
+        return view('frontend.about', compact('title'));
+        
+    }
 }

@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* front end */
-/* home */
-
 Route::get('/', [FrontendController::class, 'index']);
-/* feature */
 Route::get('/feature', [FrontendController::class, 'feature']);
 Route::get('/popular', [FrontendController::class, 'popular']);
+Route::get('/about', [FrontendController::class, 'about']);
+
