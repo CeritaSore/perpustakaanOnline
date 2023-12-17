@@ -15,8 +15,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* front end */
+
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/feature', [FrontendController::class, 'feature']);
 Route::get('/popular', [FrontendController::class, 'popular']);
 Route::get('/about', [FrontendController::class, 'about']);
 
+/* back end */
+Route::get('/dashboard', function () {
+    return view('backend.home');
+});
+Route::get('/buku', function () {
+    return view('backend.buku');
+});
+Route::get('/pengarang', function () {
+    return view('backend.pengarang');
+});
+Route::get('/penerbit', function () {
+    return view('backend.penerbit');
+});
+Route::get('/kategori', function () {
+    return view('backend.kategori');
+});
+Route::get('/pinjam', function () {
+    return view('backend.pinjam');
+});
