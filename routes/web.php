@@ -40,3 +40,9 @@ Route::get('/kategori', function () {
 Route::get('/pinjam', function () {
     return view('backend.pinjam');
 });
+Route::get('/login', function () {
+    return view('backend.login');
+});
+Route::get('/register', function () {
+    return view('backend.register');
+});
