@@ -46,3 +46,9 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('backend.register');
 });
+Route::get('/kelola', function(){
+return view('backend.user.index');
+});
+Route::get('/status', function(){
+return view('backend.status');
+});

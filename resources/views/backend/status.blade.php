@@ -3,8 +3,8 @@
     <div class="col-md-12 grid-margin">
         <div class="row">
             <div class="col-12 col-xl-8 mb-xl-0">
-                <h3 class="font-weight-bold">Penerbit</h3>
-                <h6 class="font-weight-normal">Cari penerbit buku favorit kamu!
+                <h3 class="font-weight-bold">Status peminjaman</h3>
+                <h6 class="font-weight-normal">Periksa status buku yang kamu pinjam!
                 </h6>
                 <button type="button" class="btn btn-primary">Tambah Data</button>
             </div>

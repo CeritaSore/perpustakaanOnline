@@ -47,7 +47,7 @@
                                     <li class="menu-item {{$title === 'about'?'active':''}}"><a href="/about" class="nav-link">About</a></li>
                                     
                                     <li class="menu-item"><a
-                                            href="#"
+                                            href="/dashboard"
                                             class="nav-link btn btn-outline-dark rounded-pill m-0">Login</a></li>
                                 </ul>
 
