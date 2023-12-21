@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PenerbitController;
+use App\Http\Controllers\PengarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,12 +30,9 @@ Route::get('/dashboard', function () {
 Route::get('/buku', function () {
     return view('backend.buku');
 });
-Route::get('/pengarang', function () {
-    return view('backend.pengarang');
-});
-Route::get('/penerbit', function () {
-    return view('backend.penerbit');
-});
+Route::get('/pengarang', [PengarangController::class, 'index']);
+Route::post('/pengarang', [PengarangController::class, 'store'])->name('up');
+Route::get('/penerbit', [PenerbitController::class,'index']);
 Route::get('/kategori', function () {
     return view('backend.kategori');
 });
