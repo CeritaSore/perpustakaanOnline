@@ -15,7 +15,7 @@ class PenerbitController extends Controller
     {
         //
         $listpenerbit = Penerbit::all();
-        return view('backend.penerbit',compact('listpenerbit'));
+        return view('backend.penerbit', compact('listpenerbit'));
     }
 
     /**
@@ -33,7 +33,7 @@ class PenerbitController extends Controller
     {
         //
         Penerbit::create([
-            'nama_penerbit'=>$request->nama,
+            'nama_penerbit' => $request->nama,
         ]);
         return redirect('/penerbit');
     }
@@ -60,14 +60,22 @@ class PenerbitController extends Controller
     public function update(UpdatePenerbitRequest $request, $idpenerbit)
     {
         //
-        
+        // dd($idpenerbit);
+        $ambilPenerbit = Penerbit::find($idpenerbit);
+        $ambilPenerbit->nama_penerbit = $request->nama;
+        $ambilPenerbit->save();
+        return redirect('/penerbit');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Penerbit $penerbit)
+    public function destroy(Penerbit $request,$idpenerbit)
     {
         //
+        // dd($idpenerbit);
+        $delPenerbit = Penerbit::find($idpenerbit);
+        $delPenerbit->delete();
+        return redirect('/penerbit');
     }
 }

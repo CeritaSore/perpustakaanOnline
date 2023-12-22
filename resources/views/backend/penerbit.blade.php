@@ -96,7 +96,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('edit', $penerbit->idpenerbit) }}" method="post"
+                    <form action="{{ route('edit1', $penerbit->idpenerbit) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -170,7 +170,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('delete', $penerbit->idpenerbit) }}" method="post"
+                    <form action="{{ route('delete1', $penerbit->idpenerbit) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('delete')

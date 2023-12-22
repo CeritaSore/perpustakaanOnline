@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use Illuminate\Support\Facades\Route;
@@ -41,9 +42,12 @@ Route::get('/penerbit', [PenerbitController::class,'index']);
 Route::post('/penerbit', [PenerbitController::class, 'store'])->name('up1');
 Route::put('/penerbit/{id}', [PenerbitController::class, 'update'])->name('edit1');
 Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('delete1');
-Route::get('/kategori', function () {
-    return view('backend.kategori');
-});
+
+// kategori CRUD 
+Route::get('/kategori', [KategoriController::class,'index']);
+Route::post('/kategori', [KategoriController::class,'store'])->name('up2');
+Route::put('/kategori/{id}', [KategoriController::class,'update'])->name('edit2');
+Route::delete('/kategori/{id}', [KategoriController::class,'destroy'])->name('delete2');
 Route::get('/pinjam', function () {
     return view('backend.pinjam');
 });
