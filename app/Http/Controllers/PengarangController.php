@@ -57,16 +57,25 @@ class PengarangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePengarangRequest $request, Pengarang $pengarang)
+    public function update(UpdatePengarangRequest $request, $idpengarang)
     {
         //
+        // dd($idpengarang);
+        $ambilpengarang  = Pengarang::find($idpengarang);
+        $ambilpengarang->nama_pengarang = $request->nama;
+        $ambilpengarang->save();
+        return redirect('/pengarang');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pengarang $pengarang)
+    public function destroy(Pengarang $request,$idpengarang)
     {
         //
+        // dd($idpengarang);
+        $delpengarang = Pengarang::find($idpengarang);
+        $delpengarang->delete();
+        return redirect('/pengarang');
     }
 }

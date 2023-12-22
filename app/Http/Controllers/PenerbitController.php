@@ -32,6 +32,10 @@ class PenerbitController extends Controller
     public function store(StorePenerbitRequest $request)
     {
         //
+        Penerbit::create([
+            'nama_penerbit'=>$request->nama,
+        ]);
+        return redirect('/penerbit');
     }
 
     /**
@@ -53,9 +57,10 @@ class PenerbitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePenerbitRequest $request, Penerbit $penerbit)
+    public function update(UpdatePenerbitRequest $request, $idpenerbit)
     {
         //
+        
     }
 
     /**

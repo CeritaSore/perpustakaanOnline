@@ -30,9 +30,17 @@ Route::get('/dashboard', function () {
 Route::get('/buku', function () {
     return view('backend.buku');
 });
+// pengarang CRUD
 Route::get('/pengarang', [PengarangController::class, 'index']);
 Route::post('/pengarang', [PengarangController::class, 'store'])->name('up');
+Route::put('/pengarang/{id}', [PengarangController::class, 'update'])->name('edit');
+Route::delete('/pengarang/{id}', [PengarangController::class, 'destroy'])->name('delete');
+
+// penerbit CRUD
 Route::get('/penerbit', [PenerbitController::class,'index']);
+Route::post('/penerbit', [PenerbitController::class, 'store'])->name('up1');
+Route::put('/penerbit/{id}', [PenerbitController::class, 'update'])->name('edit1');
+Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('delete1');
 Route::get('/kategori', function () {
     return view('backend.kategori');
 });
