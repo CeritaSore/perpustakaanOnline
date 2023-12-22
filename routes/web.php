@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PenerbitController;
@@ -28,9 +29,12 @@ Route::get('/about', [FrontendController::class, 'about']);
 Route::get('/dashboard', function () {
     return view('backend.home');
 });
-Route::get('/buku', function () {
-    return view('backend.buku');
-});
+
+// buku CRUD
+Route::get('/buku', [BukuController::class,'index']);
+Route::post('/buku', [BukuController::class,'store'])->name('up3');
+Route::put('/buku/{id}', [BukuController::class,'update'])->name('edit3');
+Route::delete('/buku/{id}', [BukuController::class,'destroy'])->name('delete3');
 // pengarang CRUD
 Route::get('/pengarang', [PengarangController::class, 'index']);
 Route::post('/pengarang', [PengarangController::class, 'store'])->name('up');
