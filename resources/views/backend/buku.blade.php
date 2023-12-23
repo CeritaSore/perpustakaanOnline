@@ -227,10 +227,9 @@
                                 {{ $buku->status_buku }}</h4>
 
                             <div class="d-flex justify-content-around text-center mt-5 mb-2">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                <a href="/pinjam" class="btn btn-success">
                                     <i class="ti-ticket"></i>
-                                </button>
+                                </a>
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                     data-bs-target="#exampleModalEdit">
                                     <i class="ti-pencil"></i>
