@@ -79,7 +79,7 @@ class BukuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Buku $request,$idbuku)
+    public function destroy($idbuku)
     {
         // dd($idbuku);
         $delbuku = Buku::find($idbuku);

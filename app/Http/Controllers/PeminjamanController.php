@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\Buku;
 use App\Http\Requests\StorePeminjamanRequest;
 use App\Http\Requests\UpdatePeminjamanRequest;
+use Illuminate\Http\Request;
 
 class PeminjamanController extends Controller
 {
@@ -13,8 +15,13 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $listpeminjaman = Peminjaman::all();
-        
+        $listbuku = Buku::all();
+        return view('backend.pinjam', compact('listbuku'));
+    }
+    public function status()
+    {
+        $listpinjam = Peminjaman::all();
+        return view('backend.status', compact('listpinjam'));
     }
 
     /**
@@ -22,7 +29,6 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -30,7 +36,15 @@ class PeminjamanController extends Controller
      */
     public function store(StorePeminjamanRequest $request)
     {
-        //
+        // dd($request);
+        Peminjaman::create([
+            'buku_id' => $request->judul,
+            'tgl_pinjam' => $request->tglpinjam,
+            'tgl_ambil' => $request->tglambil,
+            'lama_peminjaman' => $request->durasi,
+
+        ]);
+        return redirect('/status');
     }
 
     /**
@@ -52,9 +66,40 @@ class PeminjamanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePeminjamanRequest $request, Peminjaman $peminjaman)
+    public function update(UpdatePeminjamanRequest $request, $idpeminjaman)
     {
-        //
+        // dd($request);
+        $getpinjam = Peminjaman::find($idpeminjaman);
+        // $getpinjam->status_peminjaman = $request->status;
+        // $getpinjam->save();
+        
+        // $getbuku = Buku::find($request->idbuku);
+        // if($getpinjam == 'approved'){
+        //     $getbuku->status_buku = 'sedang dipinjam';
+        //     $getbuku->save();
+        // }
+        if($request->status == 'approved'){
+            $getpinjam->status_peminjaman = 'approved';
+            $getpinjam->save();
+    
+            $getbuku = Buku::find($request->idbuku);
+            $getbuku->status_buku = 'sedang dipinjam';
+            $getbuku->save();
+        } else if($request->status == 'returned'){
+            $getpinjam->status_peminjaman = 'returned';
+            $getpinjam->save();
+            $getbuku = Buku::find($request->idbuku);
+            $getbuku->status_buku = 'tersedia';
+            $getbuku->save();
+        }
+        else {
+            $getpinjam->status_peminjaman = 'pending';
+            $getpinjam->save();
+            $getbuku = Buku::find($request->idbuku);
+            $getbuku->status_buku = 'tersedia';
+            $getbuku->save();
+        }
+        return redirect('/status');
     }
 
     /**

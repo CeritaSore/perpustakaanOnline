@@ -3,6 +3,7 @@
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use Illuminate\Support\Facades\Route;
@@ -52,9 +53,8 @@ Route::get('/kategori', [KategoriController::class,'index']);
 Route::post('/kategori', [KategoriController::class,'store'])->name('up2');
 Route::put('/kategori/{id}', [KategoriController::class,'update'])->name('edit2');
 Route::delete('/kategori/{id}', [KategoriController::class,'destroy'])->name('delete2');
-Route::get('/pinjam', function () {
-    return view('backend.pinjam');
-});
+Route::get('/pinjam', [PeminjamanController::class,'index']);
+Route::post('/pinjam', [PeminjamanController::class,'store'])->name('up4');
 Route::get('/login', function () {
     return view('backend.login');
 });
@@ -64,6 +64,5 @@ Route::get('/register', function () {
 Route::get('/kelola', function(){
 return view('backend.user.index');
 });
-Route::get('/status', function(){
-return view('backend.status');
-});
+Route::get('/status', [PeminjamanController::class,'status']);
+Route::put('/status/{id}', [PeminjamanController::class,'update'])->name('edit4');

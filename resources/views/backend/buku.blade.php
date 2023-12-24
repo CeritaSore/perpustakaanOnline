@@ -14,10 +14,10 @@
         </div>
 
     </div>
-    <div class="col-md-4 grid-margin">
-        <div class="row">
+    <div class="col-1 col-xl-12 grid-margin">
+        <div class="row justifiy-content-around">
             @foreach ($listbuku as $buku)
-                <div class="col-xl-4 col-12">
+                <div class="col-4 col-xl-3 mb-4">
                     <div class="card text-center" style="width: 18rem;">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
@@ -94,10 +94,10 @@
         </div>
     </div>
 </div>
+{{-- edit data --}}
 @foreach ($listbuku as $buku)
-    {{-- edit data --}}
-    <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModalEdit{{ $buku->idbuku }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -166,7 +166,7 @@
 @endforeach
 {{-- delete --}}
 @foreach ($listbuku as $buku)
-    <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog"
+    <div class="modal fade" id="exampleModalDelete{{ $buku->idbuku }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel-2" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -221,22 +221,31 @@
                                     class="mx-2">|</span> <a href="#!"
                                     class="text-muted">{{ $buku->kategori->kategori }}</a>
                             </p>
+                            <div class="d-flex justify-content-center">
 
-                            <h4
-                                class=" text-capitalize d-block {{ $buku->status_buku === 'tersedia' ? 'text-bg-success' : 'text-bg-danger' }}">
-                                {{ $buku->status_buku }}</h4>
+                                <h4 class=" text-capitalize d-block text-center {{ $buku->status_buku === 'tersedia' ? 'text-bg-success' : 'text-bg-danger' }}"
+                                    style="width: 50%">
+                                    {{ $buku->status_buku }}</h4>
+                            </div>
 
                             <div class="d-flex justify-content-around text-center mt-5 mb-2">
-                                <a href="/pinjam" class="btn btn-success">
-                                    <i class="ti-ticket"></i>
-                                </a>
+                                @if ($buku->status_buku == 'sedang dipinjam')
+                                    <a href="/pinjam" class="btn btn-danger disabled">
+                                        <i class="ti-ticket"></i>
+                                    </a>
+                                @else
+                                    <a href="/pinjam" class="btn btn-success">
+                                        <i class="ti-ticket"></i>
+                                    </a>
+                                @endif
+
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalEdit">
+                                    data-bs-target="#exampleModalEdit{{ $buku->idbuku }}">
                                     <i class="ti-pencil"></i>
 
                                 </button>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalDelete">
+                                    data-bs-target="#exampleModalDelete{{ $buku->idbuku }}">
                                     <i class="ti-trash"></i>
 
                                 </button>
@@ -257,62 +266,46 @@
 @endforeach
 
 {{-- peminjaman --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
+{{-- <div class="modal fade" id="exampleModalPinjam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel-2">Masukan Buku</h5>
+                <h5 class="modal-title" id="exampleModalLabel-2">Peminjaman Buku</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ route('up4') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">pengarang</label>
-                        <select class="form-control" id="exampleFormControlSelect2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <label for="exampleFormControlSelect2">Judul Buku</label>
+                        <select class="form-control" name="judul" id="exampleFormControlSelect2">
+                            <option default>-- Pilih Buku --</option>
+                            @foreach ($listbuku as $buku)
+                                <option value="{{ $buku->idbuku }}">{{ $buku->judul_buku }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect2">Penerbit</label>
-                        <select class="form-control" id="exampleFormControlSelect2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                        <label for="exampleInputName1">Tanggal Peminjaman</label>
+                        <input type="date" name="tglpinjam" class="form-control" id="exampleInputName1">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect2">Kategori</label>
-                        <select class="form-control" id="exampleFormControlSelect2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                        <label for="exampleInputName1">Tanggal Pengambilan</label>
+                        <input type="date" name="tglambil" class="form-control" id="exampleInputName1">
                     </div>
-                    <button type="button" class="btn btn-success">Submit</button>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Lama Peminjaman</label>
+                        <input type="number" name="durasi" class="form-control" max='7'
+                            id="exampleInputName1" oninput="valid(this)">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                 </form>
-
             </div>
-            {{-- <div class="modal-footer">
-                
-                
-            </div> --}}
+           
         </div>
     </div>
-</div>
+</div> --}}

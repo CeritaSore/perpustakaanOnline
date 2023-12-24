@@ -21,6 +21,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type="text/css" href="backend/js/select.dataTables.min.css">
+    
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="backend/css/vertical-layout-light/style.css">
@@ -107,7 +108,8 @@
                         </div>
                     </li>
                     <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                            id="profileDropdown">
                             <img src="backend/images/faces/face28.jpg" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
@@ -217,17 +219,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <!-- End custom js for this page-->
-<script>
-    function valid(input) {
-        // Menghapus karakter selain angka
-        input.value = input.value.replace(/[^0-9]/g, '');
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        function valid(input) {
+            // Menghapus karakter selain angka
+            input.value = input.value.replace(/[^0-9]/g, '');
 
-        // Memastikan nilai tidak melebihi 7
-        if (parseInt(input.value) > 7) {
-            input.value = '7';
+            // Memastikan nilai tidak melebihi 7
+            if (parseInt(input.value) > 7) {
+                input.value = '7';
+            }
         }
-    }
-</script>
+    </script>
 </body>
 
 </html>
