@@ -157,9 +157,9 @@
                 </div>
                 <div class="modal-body">
                     <h2>anda yakin ingin menghapus data?</h2>
-                    <form action="{{route('edit4',$pinjam->idpeminjaman)}}" method="post">
+                    <form action="{{route('delete4',$pinjam->idpeminjaman)}}" method="post">
                         @csrf
-                        @method('put')
+                        @method('delete')
                         
                         <button type="submit" class="btn btn-success">yes</button>
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">no</button>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenerbitController;
@@ -30,6 +31,7 @@ Route::get('/about', [FrontendController::class, 'about']);
 Route::get('/dashboard', function () {
     return view('backend.home');
 });
+Route::get('/dashboard',[HomeController::class,'countBuku']);
 
 // buku CRUD
 Route::get('/buku', [BukuController::class,'index']);
@@ -66,3 +68,4 @@ return view('backend.user.index');
 });
 Route::get('/status', [PeminjamanController::class,'status']);
 Route::put('/status/{id}', [PeminjamanController::class,'update'])->name('edit4');
+Route::delete('/status/{id}', [PeminjamanController::class,'destroy'])->name('delete4');

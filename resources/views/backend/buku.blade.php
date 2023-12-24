@@ -19,7 +19,9 @@
             @foreach ($listbuku as $buku)
                 <div class="col-4 col-xl-3 mb-4">
                     <div class="card text-center" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                        <div class="" style="max-height:15rem; overflow:hidden;">
+                            <img src="{{ $buku->foto }}" class="card-img-top" alt="{{ $buku->judul_buku }}">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $buku->judul_buku }}</h5>
                             <p class="card-text">deskripsi(nanti)</p>
@@ -74,6 +76,13 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <div class="form-group">
+                            <label for="tahun">Tahun terbit</label>
+                            <input type="number" name="tahun" class="form-control" id="tahun" placeholder="Name"
+                               oninput="justNumber(this)">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleFormControlSelect2">Kategori</label>
                         <select class="form-control" id="exampleFormControlSelect2" name="kategori">
                             <option default>-- pilih kategori --</option>
@@ -82,6 +91,16 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Deskripsi(opsional)</label>
+                        <input type="text" name="deskripsi" class="form-control" id="exampleInputName1"
+                            placeholder="Name">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="formFile" class="form-label">Masukan foto(opsional)</label>
+                        <input class="form-control" name="foto" type="file" id="formFile">
+                    </div>
+
                     <button type="submit" class="btn btn-success">Submit</button>
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                 </form>
@@ -99,9 +118,9 @@
     <div class="modal fade" id="exampleModalEdit{{ $buku->idbuku }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel-2" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content modal-dialog-scrollable">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel-2">Edit Buku</h5>
+                    <h5 class="modal-long-title" id="exampleModalLabel-2">Edit Buku</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -146,10 +165,21 @@
                                         {{ $kategori->idkategori === $buku->kategori_id ? 'selected' : '' }}>
                                         {{ $buku->kategori->kategori }}</option>
                                 @endforeach
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Deskripsi(opsional)</label>
+                            <input type="text" name="deskripsi" class="form-control" id="exampleInputName1"
+                                placeholder="Name" value="{{ $buku->deskripsi }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="formFile" class="form-label">Masukan foto(opsional)</label>
+                            <div style="max-height: 20rem;overflow:hidden;">
+
+                                <img src="{{ $buku->foto }}" alt="" class="img-thumbnail">
+                            </div>
+                            <input class="form-control" value="" name="foto" type="file"
+                                id="formFile">
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
@@ -213,8 +243,8 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body text-center">
                             <div class="mt-3 mb-4">
-                                <img src="..." alt="..." class="rounded-circle img-fluid"
-                                    style="width: 100px;" />
+                                <img src="{{ $buku->foto }}" alt="{{ $buku->judul_buku }}"
+                                    class="rounded-circle img-fluid" style="width: 100px; height:100px" />
                             </div>
                             <h4 class="mb-2">{{ $buku->judul_buku }}</h4>
                             <p class="text-muted mb-4">{{ $buku->pengarang->nama_pengarang }}<span

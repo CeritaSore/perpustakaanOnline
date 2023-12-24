@@ -230,6 +230,11 @@
                 input.value = '7';
             }
         }
+        function justNumber(input) {
+            // Menghapus karakter selain angka
+            input.value = input.value.replace(/[^0-9]/g, '');
+
+        }
     </script>
 </body>
 

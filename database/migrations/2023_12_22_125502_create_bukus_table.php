@@ -17,6 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('pengarang_id');
             $table->unsignedBigInteger('penerbit_id');
             $table->unsignedBigInteger('kategori_id');
+            $table->string('tahun_terbit');
+            $table->string('deskripsi',255)->nullable();
+            $table->string('foto',255)->nullable();
             $table->enum('status_buku',['tersedia','sedang dipinjam'])->default('tersedia');
             $table->timestamps();
             // Relasi

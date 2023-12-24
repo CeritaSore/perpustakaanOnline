@@ -72,27 +72,26 @@ class PeminjamanController extends Controller
         $getpinjam = Peminjaman::find($idpeminjaman);
         // $getpinjam->status_peminjaman = $request->status;
         // $getpinjam->save();
-        
+
         // $getbuku = Buku::find($request->idbuku);
         // if($getpinjam == 'approved'){
         //     $getbuku->status_buku = 'sedang dipinjam';
         //     $getbuku->save();
         // }
-        if($request->status == 'approved'){
+        if ($request->status == 'approved') {
             $getpinjam->status_peminjaman = 'approved';
             $getpinjam->save();
-    
+
             $getbuku = Buku::find($request->idbuku);
             $getbuku->status_buku = 'sedang dipinjam';
             $getbuku->save();
-        } else if($request->status == 'returned'){
+        } else if ($request->status == 'returned') {
             $getpinjam->status_peminjaman = 'returned';
             $getpinjam->save();
             $getbuku = Buku::find($request->idbuku);
             $getbuku->status_buku = 'tersedia';
             $getbuku->save();
-        }
-        else {
+        } else {
             $getpinjam->status_peminjaman = 'pending';
             $getpinjam->save();
             $getbuku = Buku::find($request->idbuku);
@@ -105,8 +104,10 @@ class PeminjamanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Peminjaman $peminjaman)
+    public function destroy($idpeminjaman)
     {
-        //
+        $delpeminjaman = Peminjaman::find($idpeminjaman);
+        $delpeminjaman->delete();
+        return redirect('/status');
     }
 }
