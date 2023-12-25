@@ -10,16 +10,21 @@
             </div>
         </div>
     </div>
+    @if (session('warning'))
+        <div class="alert alert-warning">
+            {{ session('warning') }}
+        </div>
+    @endif
     <div class="col-md-12 grid-margin">
         <div class="row">
             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                <form action="{{route('up4')}}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('up4') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="judulBuku">Judul Buku</label>
                         <select id="judulBuku" class="js-example-basic-single w-100 select2-hidden-accessible"
                             tabindex="-1" aria-hidden="true" name="judul">
-                            <option default  selected>Pilih buku</option>
+                            <option default selected>Pilih buku</option>
                             @foreach ($listbuku as $buku)
                                 <option value="{{ $buku->idbuku }}">{{ $buku->judul_buku }}</option>
                             @endforeach
@@ -36,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputName1">Lama Peminjaman</label>
-                        <input type="number" name="durasi" class="form-control" max='7' id="exampleInputName1"
+                        <input type="number" name="durasi" class="form-control" id="exampleInputName1"
                             oninput="valid(this)">
                     </div>
                     <button type="submit" class="btn btn-success">Submit</button>

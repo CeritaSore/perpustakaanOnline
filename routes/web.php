@@ -55,8 +55,6 @@ Route::get('/kategori', [KategoriController::class,'index']);
 Route::post('/kategori', [KategoriController::class,'store'])->name('up2');
 Route::put('/kategori/{id}', [KategoriController::class,'update'])->name('edit2');
 Route::delete('/kategori/{id}', [KategoriController::class,'destroy'])->name('delete2');
-Route::get('/pinjam', [PeminjamanController::class,'index']);
-Route::post('/pinjam', [PeminjamanController::class,'store'])->name('up4');
 Route::get('/login', function () {
     return view('backend.login');
 });
@@ -64,8 +62,12 @@ Route::get('/register', function () {
     return view('backend.register');
 });
 Route::get('/kelola', function(){
-return view('backend.user.index');
+    return view('backend.user.index');
 });
+
+
 Route::get('/status', [PeminjamanController::class,'status']);
+Route::get('/pinjam', [PeminjamanController::class,'index']);
+Route::post('/pinjam', [PeminjamanController::class,'store'])->name('up4');
 Route::put('/status/{id}', [PeminjamanController::class,'update'])->name('edit4');
 Route::delete('/status/{id}', [PeminjamanController::class,'destroy'])->name('delete4');

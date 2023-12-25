@@ -7,6 +7,7 @@
                 <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have
                     <span class="text-primary">3 unread alerts!</span>
                 </h6>
+                <p>waktu saat ini adalah : {{$waktusaatini}}</p>
             </div>
         </div>
     </div>

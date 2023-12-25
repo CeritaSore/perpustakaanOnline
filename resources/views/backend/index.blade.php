@@ -34,10 +34,10 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="backend/images/logo.svg"
-                        class="mr-2" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="backend/images/logo-mini.svg"
-                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="assets/logo/logo.png"
+                        class="mr-2" alt="logo" style="height:7rem" /></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/logo/logo.png"
+                        alt="logo" style="height:6rem;width:6rem"/></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -221,7 +221,7 @@
     <!-- End custom js for this page-->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        function valid(input) {
+        /*function valid(input) {
             // Menghapus karakter selain angka
             input.value = input.value.replace(/[^0-9]/g, '');
 
@@ -229,7 +229,7 @@
             if (parseInt(input.value) > 7) {
                 input.value = '7';
             }
-        }
+        }*/
         function justNumber(input) {
             // Menghapus karakter selain angka
             input.value = input.value.replace(/[^0-9]/g, '');

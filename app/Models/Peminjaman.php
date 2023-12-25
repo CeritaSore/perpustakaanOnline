@@ -9,7 +9,7 @@ class Peminjaman extends Model
 {
     use HasFactory;
     protected $table = 'peminjamen';
-    protected $fillable = ['buku_id', 'tgl_pinjam', 'tgl_ambil', 'lama_peminjaman'];
+    protected $fillable = ['buku_id', 'tgl_pinjam', 'tgl_ambil', 'lama_peminjaman','tgl_kembali'];
     protected $primaryKey = 'idpeminjaman';
     public function buku()
     {
